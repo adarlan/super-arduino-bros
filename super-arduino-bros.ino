@@ -12,9 +12,6 @@ int A  = 9;
 int As = 10; int Bb = As;
 int B  = 11;
 
-int notePins[] = {13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
-int buzzerPin = A0;
-
 float noteFrequencies[] = {
 	2112.00000000000f,
 	2237.58606720000f,
@@ -30,16 +27,8 @@ float noteFrequencies[] = {
 	3986.92533026287f
 };
 
-void setup() {
-
-	pinMode(buzzerPin, OUTPUT);
-	for (int i = 0; i < 12; i++) pinMode(notePins[i], OUTPUT);
-
-	overworld();
-	deathSound();
-
-	for (int i = 0; i < 12; i++) pinMode(notePins[i], INPUT);
-}
+int notePins[] = {13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
+int buzzerPin = A0;
 
 int bpm;
 float R;
@@ -66,6 +55,17 @@ void play(int note, float duration) {
 
 	delay(_duration);
 	noTone(buzzerPin);
+}
+
+void setup() {
+
+	pinMode(buzzerPin, OUTPUT);
+	for (int i = 0; i < 12; i++) pinMode(notePins[i], OUTPUT);
+
+	overworld();
+	deathSound();
+
+	for (int i = 0; i < 12; i++) pinMode(notePins[i], INPUT);
 }
 
 void deathSound() {
